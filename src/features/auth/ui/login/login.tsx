@@ -10,15 +10,12 @@ import { LoginParamsType } from "features/auth/api/auth.api";
 import { BaseResponseType } from "common/types";
 import s from "features/auth/ui/login/login.module.css";
 
-type FormikErrorType = {
-  email?: string;
-  password?: string;
-  rememberMe?: boolean;
-};
+
+type FormikErrorType = Partial<Omit<LoginParamsType, 'captcha'>>
 
 export const Login = () => {
-  const { login } = useActions(authThunks);
 
+  const { login } = useActions(authThunks);
   const isLoggedIn = useSelector(selectIsLoggedIn);
 
   const formik = useFormik({
