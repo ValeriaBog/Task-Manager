@@ -2,6 +2,7 @@ import React, {ChangeEvent, FC, KeyboardEvent, memo, useState} from "react";
 import { IconButton, TextField } from "@mui/material";
 import { AddBox } from "@mui/icons-material";
 import {BaseResponseType} from "../../types";
+import {RejectValueType} from "../../utils/create-app-async-thunk";
 
 type Props = {
   addItem: (title: string) => Promise<any>;
@@ -18,8 +19,11 @@ export const AddItemForm: FC<Props> = memo( ({ addItem, disabled = false }: Prop
           .then(() => {
             setTitle("");
           })
-          .catch((e: BaseResponseType)=>{
-            setError(e.messages[0])
+          .catch((err: RejectValueType)=>{
+              if (err.data) {
+                  const messages = err.data.messages
+                  setError(messages.length ? messages[0] : 'Some error occurred')
+              }
           });
 
     } else {
