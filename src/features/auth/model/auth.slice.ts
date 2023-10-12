@@ -6,7 +6,7 @@ import { createAppAsyncThunk} from "common/utils";
 import { ResultCode } from "common/enums";
 
 const login = createAppAsyncThunk<{ isLoggedIn: boolean }, LoginParamsType>("auth/login", async (arg, thunkAPI) => {
-  const { dispatch, rejectWithValue } = thunkAPI;
+  const { rejectWithValue } = thunkAPI;
     const res = await authAPI.login(arg);
     if (res.data.resultCode === ResultCode.Success) {
       return { isLoggedIn: true };
