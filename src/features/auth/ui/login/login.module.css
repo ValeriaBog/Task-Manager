@@ -1,5 +1,56 @@
 .error {
-  color: red;
-  font-weight: bold;
-  margin: 0;
+    font-size: 15px;
+    color: rgba(255, 0, 0, 0.75);
+    font-weight: bold;
+    margin: 0;
 }
+
+.container {
+    max-width: 400px;
+    margin: 0 auto;
+}
+
+.title {
+    text-align: center;
+}
+
+.list {
+    margin-top: 50px;
+    padding: 30px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.datasForSignUp {
+    border: none;
+    background-color: transparent;
+    border-bottom: 1px dashed #5200a2;
+    font-size: 15px;
+    color: #5200a2;
+    cursor: pointer;
+    position: relative;
+}
+
+.check {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 20px;
+}
+
+.info {
+    position: absolute;
+    z-index: 1000;
+    background-color: #f5f5f5;
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+    width: 280px;
+    border-radius: 5px;
+    box-shadow:
+            0 2px 4px -1px rgba(0,0,0,0.2),
+            0 4px 5px 0 rgba(0,0,0,0.14),
+            0 1px 10px 0 rgba(0,0,0,0.12);
+}
+
+
