@@ -1,3 +1,16 @@
 .isDone {
     opacity: 0.5;
 }
+.title{
+    width: 100%;
+    user-select: none;
+}
+.container{
+    border-bottom: 1px solid rgba(65, 68, 80, 0.25);
+    display: flex;
+    justify-content: space-between;
+    color: rgba(65, 68, 80, 0.9);
+}
+.checkbox{
+
+}

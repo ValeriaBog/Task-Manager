@@ -3,6 +3,7 @@ import {TaskStatuses} from "../../../../../../common/enums";
 import {TaskType} from "../../../../tasks/api/tasks.api.types";
 import {TodolistDomainType} from "../../../model/todolists.reducer";
 import {Task} from "./task/task";
+import s from './tasks.module.css'
 
 type Props = {
     tasks: TaskType[];
@@ -21,7 +22,7 @@ export const Tasks: FC<Props> = ({tasks, todolist}) => {
     }
 
     return (
-        <>
+        <div className={tasksForTodolist.length !==0 ? s.container : ''}>
             {tasksForTodolist.map((t) => (
                 <Task
                     key={t.id}
@@ -29,7 +30,7 @@ export const Tasks: FC<Props> = ({tasks, todolist}) => {
                     todolistId={todolist.id}
                 />
             ))}
-        </>
+        </div>
     );
 };
 

@@ -10,6 +10,7 @@ import {selectIsLoggedIn} from "features/auth/model/auth.selectors";
 import {selectTasks} from "features/todolists-lists/tasks/model/tasks.selectors";
 import {selectTodolists} from "features/todolists-lists/todolists/model/todolists.selectors";
 import s from './todolists-list.module.css'
+import {AddTaskPlus} from "../../assets/add-task-plus";
 
 export const TodolistsList = () => {
     const todolists = useSelector(selectTodolists);
@@ -40,25 +41,33 @@ export const TodolistsList = () => {
 
     return (
         <>
-            <Grid container className={s.container}>
-                <AddItemForm addItem={addTodolist}/>
-            </Grid>
-            <Grid container spacing={3}>
-                {todolists.map((tl) => {
-                    let allTodolistTasks = tasks[tl.id];
+            <div className={s.container}>
+                <div className={s.textFieldContainer}>
+                    <AddItemForm addItem={addTodolist}
+                                 name={'Add todolist'}
+                                 children={<AddTaskPlus/>}
+                                 label={'Add todolist'}
+                                 className={s.textField}
+                    />
+                </div>
+                <div className={s.todolists}>
+                    {todolists.map((tl) => {
+                        let allTodolistTasks = tasks[tl.id];
 
-                    return (
-                        <Grid item key={tl.id}>
-                            <Paper className={s.list}>
-                                <Todolist
-                                    todolist={tl}
-                                    tasks={allTodolistTasks}
-                                />
-                            </Paper>
-                        </Grid>
-                    );
-                })}
-            </Grid>
+                        return (
+                            <Grid item key={tl.id}>
+                                <Paper elevation={3} className={s.list}>
+                                    <Todolist
+                                        todolist={tl}
+                                        tasks={allTodolistTasks}
+                                    />
+                                </Paper>
+                            </Grid>
+                        );
+                    })}
+                </div>
+            </div>
+
         </>
     );
 };

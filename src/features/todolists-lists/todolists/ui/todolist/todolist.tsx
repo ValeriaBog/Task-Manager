@@ -1,21 +1,16 @@
-import React, {FC, memo, useCallback, useEffect} from "react";
-import {Delete} from "@mui/icons-material";
-import {Button, IconButton} from "@mui/material";
-import {Task} from "./tasks/task/task";
+import React, {FC, memo, useEffect} from "react";
 import {
-    TodolistDomainType, todolistsActions,
-    todolistsThunks
+    TodolistDomainType
 } from "features/todolists-lists/todolists/model/todolists.reducer";
 import {tasksThunks} from "features/todolists-lists/tasks/model/tasks.reducer";
-import {TaskStatuses} from "common/enums";
 import {useActions} from "common/hooks";
-import {AddItemForm, EditableSpan} from "common/components";
+import {AddItemForm} from "common/components";
 import {TaskType} from "../../../tasks/api/tasks.api.types";
 import s from './todolist.module.css'
 import {FilterTasksButtons} from "./filter-tasks-buttons/filter-tasks-buttons";
 import {Tasks} from "./tasks/tasks";
-import {TodolistsList} from "../../../todolists-list";
 import {TodolistTitle} from "./todolist-title/todolist-title";
+import {AddTaskPlus} from "../../../../../assets/add-task-plus";
 
 
 type Props = {
@@ -33,20 +28,27 @@ export const Todolist: FC<Props> = memo(({todolist, tasks}) => {
     }, []);
 
     const addTaskCallBack = (title: string) => {
-       return  addTask({title, todolistId: todolist.id}).unwrap();
+        return addTask({title, todolistId: todolist.id}).unwrap();
     }
 
 
     return (
         <div>
             <TodolistTitle todolist={todolist}/>
-            <AddItemForm addItem={addTaskCallBack} disabled={todolist.entityStatus === "loading"}/>
             <div>
                 <Tasks tasks={tasks} todolist={todolist}/>
             </div>
+            <AddItemForm addItem={addTaskCallBack}
+                         disabled={todolist.entityStatus === "loading"}
+                         label={'Add task'}
+                         name={'Add task '}
+                         children={<AddTaskPlus/>}
+                         className={s.textField}
+            />
             <div className={s.button}>
                 <FilterTasksButtons todolist={todolist}/>
             </div>
         </div>
-    );
+    )
+        ;
 });

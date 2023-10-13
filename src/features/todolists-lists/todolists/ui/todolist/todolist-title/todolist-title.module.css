@@ -1,0 +1,11 @@
+.container{
+    display: flex;
+    justify-content: space-between;
+    margin: 0 0 20px 0;
+}
+.title{
+    color: rgba(65, 68, 80, 0.9);
+    cursor: pointer;
+    user-select: none;
+}
+

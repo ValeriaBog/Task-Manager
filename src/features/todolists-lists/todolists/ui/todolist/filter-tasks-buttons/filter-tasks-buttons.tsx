@@ -1,7 +1,8 @@
-import React, {FC, useCallback} from 'react';
+import React, {FC} from 'react';
 import {Button} from "@mui/material";
 import {useActions} from "../../../../../../common/hooks";
 import {FilterValuesType, TodolistDomainType, todolistsActions} from "../../../model/todolists.reducer";
+import s from './filter-tasks-buttons.module.css'
 
 type Props = {
     todolist: TodolistDomainType
@@ -16,29 +17,29 @@ export const FilterTasksButtons: FC<Props> = ({todolist}) => {
 
 
     return (
-        <>
+        <div className={s.buttons}>
             <Button
-                variant={todolist.filter === "all" ? "outlined" : "text"}
+                variant={todolist.filter === "all" ? "contained" : "text"}
                 onClick={()=>{changeFilterHandler("all")}}
-                color={"inherit"}
+                color={"secondary"}
             >
                 All
             </Button>
             <Button
-                variant={todolist.filter === "active" ? "outlined" : "text"}
+                variant={todolist.filter === "active" ? "contained" : "text"}
                 onClick={()=>{changeFilterHandler("active")}}
-                color={"primary"}
+                color={"secondary"}
             >
                 Active
             </Button>
             <Button
-                variant={todolist.filter === "completed" ? "outlined" : "text"}
+                variant={todolist.filter === "completed" ? "contained" : "text"}
                 onClick={()=>{changeFilterHandler("completed")}}
                 color={"secondary"}
             >
                 Completed
             </Button>
-        </>
+        </div>
     );
 };
 

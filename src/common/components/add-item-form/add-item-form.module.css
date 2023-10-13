@@ -1,0 +1,21 @@
+.buttons{
+    z-index: 1000;
+    display: flex;
+    justify-content: space-between;
+    flex-direction: column;
+}
+.field{
+    display: flex;
+    justify-content: space-between;
+
+}
+.name{
+    cursor: pointer;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    gap: 3px;
+    font-weight: 500;
+    color: rgb(65, 68, 80);
+    user-select: none;
+}

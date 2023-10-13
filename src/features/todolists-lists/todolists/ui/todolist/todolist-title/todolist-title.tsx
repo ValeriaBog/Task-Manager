@@ -4,6 +4,8 @@ import {IconButton} from "@mui/material";
 import {Delete} from "@mui/icons-material";
 import {useActions} from "../../../../../../common/hooks";
 import {TodolistDomainType, todolistsThunks} from "../../../model/todolists.reducer";
+import s from './todolist-title.module.css'
+import {DeleteTodolist} from "../../../../../../assets/delete-todolist";
 
 type Props = {
     todolist: TodolistDomainType;
@@ -23,10 +25,10 @@ export const TodolistTitle: FC<Props> = ({todolist}) => {
 
     return (
         <>
-            <h3>
-                <EditableSpan value={todolist.title} onChange={changeTodolistTitleCallBack}/>
+            <h3 className={s.container}>
+                <EditableSpan value={todolist.title} onChange={changeTodolistTitleCallBack} className={s.title}/>
                 <IconButton onClick={removeTodolistCallBack} disabled={todolist.entityStatus === "loading"}>
-                    <Delete/>
+                    <DeleteTodolist/>
                 </IconButton>
             </h3>
         </>
